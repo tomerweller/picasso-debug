@@ -31,9 +31,15 @@ class ImageViewAction extends Action<ImageView> {
   }
 
   @Override public void complete(Bitmap result, Picasso.LoadedFrom from) {
+
     if (result == null) {
       throw new AssertionError(
           String.format("Attempted to complete action with no result!\n%s", this));
+    }
+
+    if (result.isRecycled()) {
+      PicassoCustomLogger.logError("Recycled Bitmap: [" + key.replaceAll("\n", ";")
+              + "], [+" + from + "]");
     }
 
     ImageView target = this.target.get();

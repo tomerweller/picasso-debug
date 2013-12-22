@@ -359,6 +359,10 @@ public class RequestCreator {
     if (!skipMemoryCache) {
       Bitmap bitmap = picasso.quickMemoryCacheCheck(requestKey);
       if (bitmap != null) {
+        if (bitmap.isRecycled()) {
+            PicassoCustomLogger.logError("Recycled Bitmap: [" + requestKey.replaceAll("\n", ";")
+                    + "], [MEMORY]");
+        }
         picasso.cancelRequest(target);
         PicassoDrawable.setBitmap(target, picasso.context, bitmap, MEMORY, noFade,
             picasso.debugging);

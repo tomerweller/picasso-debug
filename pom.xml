@@ -3,6 +3,15 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
   <modelVersion>4.0.0</modelVersion>
 
+    <!-- remote repository server info where artifacts would be pushed -->
+    <distributionManagement>
+        <repository>
+            <id>nexus_anydo</id>
+            <name>Anydo Nexus Repository</name>
+            <url>http://nexus.pasten.org:8081/nexus/content/repositories/anydo-repository/</url>
+        </repository>
+    </distributionManagement>
+
   <parent>
     <groupId>org.sonatype.oss</groupId>
     <artifactId>oss-parent</artifactId>
@@ -11,7 +20,7 @@
 
   <groupId>com.squareup.picasso</groupId>
   <artifactId>picasso-parent</artifactId>
-  <version>2.1.2-SNAPSHOT</version>
+  <version>2.1.2-ANYDO</version>
   <packaging>pom</packaging>
 
   <name>Picasso (Parent)</name>
